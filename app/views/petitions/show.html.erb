@@ -3,5 +3,8 @@
 <h3><%= @petition.title %></h3>
 
 <p>
-  <%= @petition.description %>
+	<%= Time.now.strftime("%d/%m/%Y %I:%M") %><br />
+  <%= @petition.description %><br />
+  <h4>Голосов:</h4><%= @vote %>
+  <%= button_to "Поддержать" %>
 </p>

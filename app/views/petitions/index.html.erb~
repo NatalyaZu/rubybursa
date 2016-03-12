@@ -1,0 +1,19 @@
+<h2><%= params[:my] ? 'Мои' : 'Все' %> петиции</h2>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Петиция</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
+    <th colspan="2">Действия</th>
+  </tr>
+  </thead>
+  <% @petitions.each do |petition| %>
+    <tr>
+    	<td><%= render 'petition' %></td>
+    	<td><%= link_to "Изменить", edit_petition_path(petition) %></td>
+ 	<td><%= link_to "Удалить", petition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
+  <% end %>
+</table>

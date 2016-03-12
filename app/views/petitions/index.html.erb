@@ -4,10 +4,16 @@
   <thead>
   <tr>
     <th>Петиция</th>
-    <th>Автор</th>
+    <th>Голоса</th>
+    <th>Дата создания</th>
+    <th colspan="2">Действия</th>
   </tr>
   </thead>
   <% @petitions.each do |petition| %>
-    <%= render 'petition', petition: petition %>
+    <tr>
+    	<td><%= render 'petition', petition: petition %></td>
+    	<td><%= link_to "Изменить", edit_petition_path(petition) %></td>
+ 	<td><%= link_to "Удалить", petition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+    </tr>
   <% end %>
 </table>

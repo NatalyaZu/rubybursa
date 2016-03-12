@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to "Изменить", petition_path %></td>
+ 	<td><%= link_to "Удалить", petition, method: :delete %></td>
+</tr>
