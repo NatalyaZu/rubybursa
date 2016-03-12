@@ -3,8 +3,9 @@
 <h3><%= @petition.title %></h3>
 
 <p>
-	<%= Time.now.strftime("%d/%m/%Y %I:%M") %><br />
+	<%= @petition.created_at.strftime("%d/%m/%Y %H:%M") %><br />
   <%= @petition.description %><br />
-  <h4>Голосов:</h4><%= @vote %>
-  <%= button_to "Поддержать" %>
+  <h4>Голосов:</h4><%=  %><br />
+  <%= button_to "Поддержать", vote_path(user_id: @petition.user.id, petition_id: @petition) %>
+  
 </p>

@@ -3,17 +3,26 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Петиция</th>
-    <th>Голоса</th>
-    <th>Дата создания</th>
-    <th colspan="2">Действия</th>
+    <% if params[:my] %>
+    	<th>Петиция</th>
+    	<th>Голоса</th>
+    	<th>Дата создания</th>
+    	<th colspan="2" class="pull-center">Действия</th>
+    <% else %>
+    	<th>Петиция</th>
+    	<th>Автор</th> 
+    	<th>Голоса</th>
+    	<th>Дата создания</th>
+    <% end %>
   </tr>
   </thead>
   <% @petitions.each do |petition| %>
     <tr>
-    	<td><%= render 'petition' %></td>
-    	<td><%= link_to "Изменить", edit_petition_path(petition) %></td>
- 	<td><%= link_to "Удалить", petition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-    </tr>
+    	<% if params[:my] %>
+    	<td><%= render 'action', petition: petition %></td>
+    	<% else %>
+    	<td><%= render 'petition', petition: petition %></td>
+    	<% end %>
+   </tr>
   <% end %>
 </table>

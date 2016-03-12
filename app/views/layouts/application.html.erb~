@@ -66,9 +66,9 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list navbar-right">
+        <div class="colums">
+          <div id="side">
+            <ul class="nav nav-list la">
               <li><h4><%= link_to "Все петиции", petitions_path %></h4></li>
               <li><h4><%= link_to "Создать петицию", new_petition_path %></h4></li>
               <% if current_user %>

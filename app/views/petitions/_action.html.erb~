@@ -1,4 +1,6 @@
 <tr>
+	<td><%= link_to petition.title, petition_path(petition) %></td>
+	<td><%= %></td>
 	<td><%= link_to "Изменить", edit_petition_path(petition) %></td>
  	<td><%= link_to "Удалить", petition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
 </tr>
