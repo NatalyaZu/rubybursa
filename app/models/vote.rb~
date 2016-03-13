@@ -1,5 +1,7 @@
 class Vote < ActiveRecord::Base
-
-	validates :vote, presence: true, uniqueness: { scope: :vote, message: "Вы не можете больше голосовать!" }
+	belong_to :user
+	belong_to :petition
+	
+	validates :user_id, uniqueness: { scope: :petition_id }
 
 end

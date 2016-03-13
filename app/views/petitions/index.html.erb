@@ -1,28 +1,15 @@
-<h2><%= params[:my] ? 'Мои' : 'Все' %> петиции</h2>
+<h2>Все петиции</h2>
 
 <table class="table">
   <thead>
   <tr>
-    <% if params[:my] %>
-    	<th>Петиция</th>
-    	<th>Голоса</th>
-    	<th>Дата создания</th>
-    	<th colspan="2">Действия</th>
-    <% else %>
-    	<th>Петиция</th>
-    	<th>Автор</th> 
-    	<th>Голоса</th>
-    	<th>Дата создания</th>
-    <% end %>
+  	<th>Петиция</th>
+    <th>Автор</th> 
+    <th>Голоса</th>
+    <th>Дата создания</th>
   </tr>
   </thead>
   <% @petitions.each do |petition| %>
-    <tr>
-    	<% if params[:my] %>
-    	<td><%= render 'action', petition: petition %></td>
-    	<% else %>
-    	<td><%= render 'petition', petition: petition %></td>
-    	<% end %>
-   </tr>
+    <%= render 'petition', petition: petition %>
   <% end %>
 </table>

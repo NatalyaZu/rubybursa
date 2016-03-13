@@ -3,7 +3,10 @@ class PetitionsController < ApplicationController
 
   def index
     @petitions = Petition.all
-    @petitions = @petitions.where(user: current_user) if params[:my]
+    if params[:my]
+    	@petitions = @petitions.where(user: current_user)
+    	render 'my_index'
+    end
   end
 
   def show
@@ -24,13 +27,9 @@ class PetitionsController < ApplicationController
   end
 
 	def update
-		@petition = Petition.find(params[:id])
-		if @petition.update_attributes(permitted_params)
-		flash[:success] = "Петиция обновлена"
-		redirect_to @petition
-		else
-			render 'edit'
-		end
+		petition = current_user.petitions.find(params[:id])
+		petition.update(permitted_params)
+			redirect_to petition, notice: 'Петиция обновлена'
 	end
 	
 	def destroy
