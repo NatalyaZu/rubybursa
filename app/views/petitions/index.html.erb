@@ -1,10 +1,12 @@
-<h2><%= params[:my] ? 'Мои' : 'Все' %> петиции</h2>
+<h2>Все петиции</h2>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Петиция</th>
-    <th>Автор</th>
+  	<th>Петиция</th>
+    <th>Автор</th> 
+    <th>Голоса</th>
+    <th>Дата создания</th>
   </tr>
   </thead>
   <% @petitions.each do |petition| %>
