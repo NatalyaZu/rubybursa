@@ -14,7 +14,10 @@ class PetitionsController < ApplicationController
   end
 
   def create
-    petition = current_user.petitions.create(permitted_params)
+    petition = current_user.petitions.create(permitted_params.merge({ user: User.last }))
+    UserMailer.petition_created(petition).deliver_later
+  #  VotingEndingJob.perform_later
+    Rails.logger.info 'After mailer'
     redirect_to petition
   end
 

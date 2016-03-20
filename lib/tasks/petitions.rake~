@@ -1,0 +1,6 @@
+namespace :petitions do
+  desc "TODO"
+  task check_old: :environment do
+  end
+
+end
